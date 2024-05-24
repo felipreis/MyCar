@@ -10,7 +10,15 @@ import java.util.Date;
  *
  * @author felip
  */
-public class Alugar {
+public class Aluguel {
+    
+    private int codigo;
+    private int codCarro;
+    private int codCliente;
+    private Date dataSaida;
+    private Date dataEntrega;
+    private Double preco;
+    private int formaPagamento;
 
     public int getCodigo() {
         return codigo;
@@ -68,12 +76,6 @@ public class Alugar {
         this.formaPagamento = formaPagamento;
     }
     
-    private int codigo;
-    private int codCarro;
-    private int codCliente;
-    private Date dataSaida;
-    private Date dataEntrega;
-    private Double preco;
-    private int formaPagamento;
+
     
 }

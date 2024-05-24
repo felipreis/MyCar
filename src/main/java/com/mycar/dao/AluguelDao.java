@@ -4,10 +4,32 @@
  */
 package com.mycar.dao;
 
+import com.mycar.modelo.Aluguel;
+import com.mycar.modelo.Carro;
+import java.sql.SQLException;
+
 /**
  *
  * @author felip
  */
 public class AluguelDao {
     
+    
+    public boolean alugarCarro(Aluguel aluguel) throws SQLException{
+        
+        return false;
+        
+    }
+    
+    public Aluguel ConsultarAlguel(Aluguel aluguel) throws SQLException{
+        
+        return null;
+        
+    }
+    
+    public boolean DevolverCarro(Aluguel aluguel) throws SQLException{
+        
+        return false;
+        
+    }
 }
