@@ -21,13 +21,13 @@ public class AluguelDao {
         
     }
     
-    public Aluguel ConsultarAlguel(Aluguel aluguel) throws SQLException{
+    public Aluguel consultarAluguel(Aluguel aluguel) throws SQLException{
         
         return null;
         
     }
     
-    public boolean DevolverCarro(Aluguel aluguel) throws SQLException{
+    public boolean devolverCarro(Aluguel aluguel) throws SQLException{
         
         return false;
         
