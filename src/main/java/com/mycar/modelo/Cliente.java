@@ -4,6 +4,8 @@
  */
 package com.mycar.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author felip
@@ -12,7 +14,7 @@ public class Cliente {
     
     private int codigo;
     private String nome;
-    private int dataNascimento;
+    private Date dataNascimento;
     private int cpf;
     private int telefone;
     private String email;
@@ -33,11 +35,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(int dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
