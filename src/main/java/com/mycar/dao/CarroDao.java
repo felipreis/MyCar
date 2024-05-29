@@ -76,7 +76,25 @@ public class CarroDao {
     
     public boolean atualizar (Carro carro) throws SQLException{
         
-        return false;
+        Conexao conexao = new Conexao();
+        Connection connection = conexao.conectar();
+        boolean retorno = false;
+        String query = "UPDATE CARRO SET "
+                + " Status = " + "'" +   carro.getStatus()  + "'," 
+                + " where codigo = " + "'" + carro.getCodigo() + "'";
+        
+        try {
+            Statement statement = connection.createStatement();
+            retorno =  statement.execute(query);
+        }catch (SQLException ex) {
+            retorno = true;
+        } finally {
+            conexao.desconectar(connection);
+        }
+        
+        return retorno;
+        
+        
         
     }
     
