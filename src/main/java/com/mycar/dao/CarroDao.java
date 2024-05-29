@@ -6,6 +6,7 @@ package com.mycar.dao;
 
 import com.mycar.modelo.Carro;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -47,11 +48,29 @@ public class CarroDao {
         
     }
     
-    public ArrayList<Carro> consultar (Carro carro) throws SQLException{
+    public Carro consultar (Carro carro) throws SQLException{
         
-   
-        return null;
+        Carro carroRetorno = new Carro();   
+        Conexao conexao = new Conexao();
+        Connection connection = conexao.conectar();
+        String query = "SELECT * FROM Carro where codigo = " + carro.getCodigo();
+        Statement statement =  connection.createStatement();
+        ResultSet retorno =  statement.executeQuery(query);
         
+          
+        while (retorno.next()){
+              
+                carroRetorno.setCodigo(retorno.getInt("codigo"));
+                carroRetorno.setModelo(retorno.getString("Modelo"));
+                carroRetorno.setPlaca(retorno.getString("Placa"));
+                carroRetorno.setMarca(retorno.getString("Marca"));
+                carroRetorno.setCor(retorno.getString("Cor"));
+                carroRetorno.setAno(retorno.getInt("Ano"));
+                carroRetorno.setStatus(retorno.getString("Status"));
+                
+        }
+        
+        return carroRetorno;
    
     }
     

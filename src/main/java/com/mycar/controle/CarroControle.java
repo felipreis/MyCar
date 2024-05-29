@@ -20,7 +20,7 @@ public class CarroControle {
         return carroService.cadastrar(carro);
     }
     
-    public ArrayList<Carro> consultar (Carro carro) throws SQLException{
+    public Carro consultar (Carro carro) throws SQLException{
         CarroService carroService = new CarroService();
         return carroService.consultar(carro);
     }
