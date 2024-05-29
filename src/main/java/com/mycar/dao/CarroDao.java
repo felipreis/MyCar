@@ -5,7 +5,9 @@
 package com.mycar.dao;
 
 import com.mycar.modelo.Carro;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +19,31 @@ public class CarroDao {
     
     public boolean cadastrar (Carro carro) throws SQLException{
         
-        return false;
+        
+        Conexao conexao = new Conexao();
+        Connection connection = conexao.conectar();
+                
+        String query = "INSERT INTO Carro (Codigo,Modelo,Placa,Marca,Cor,Ano) values (" +
+                "'" +   carro.getCodigo()  + "'," +
+                "'" +   carro.getModelo()   + "'," +
+                "'" +   carro.getPlaca() + "'," +
+                "'" +   carro.getMarca() + "'," +
+                "'" +   carro.getCor() + "'," +
+                carro.getAno()+ ")";
+        
+        //INSERT INTO Livro (Titulo,Autor,Editora,quantidade) values ('O Rei','João','Caminho das letras',2)
+        //INSERT INTO Livro (Titulo,Autor,Editora,quantidade) values (O Rei,João,Caminho das letras,2)
+        
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute(query);
+            conexao.desconectar(connection);
+            return true;
+        }catch (SQLException ex) {
+            System.out.print(ex.initCause(ex));
+            return false;
+        } 
+    
         
     }
     
