@@ -9,6 +9,7 @@ import com.mycar.modelo.Carro;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -67,6 +68,11 @@ public class CarroAtualizar extends javax.swing.JFrame {
         jButton2.setText("Voltar");
 
         jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         tblCarro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblCarro.setModel(new javax.swing.table.DefaultTableModel(
@@ -198,8 +204,8 @@ public class CarroAtualizar extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CarroAtualizar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        carro.setStatus(txtStatus.getItemAt(txtStatus.getSelectedIndex()));
+        String status = txtStatus.getItemAt(txtStatus.getSelectedIndex());
+        carro.setStatus(status);
         
         try {
             carroControle.atualizar(carro);
@@ -207,6 +213,33 @@ public class CarroAtualizar extends javax.swing.JFrame {
             Logger.getLogger(CarroAtualizar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+         CarroControle carroControle = new CarroControle();
+            Carro carro = new Carro();
+            
+            carro.setCodigo(Integer.parseInt(txtCodigo.getText()));
+            
+            try {
+            if(carroControle.excluir(carro) == false){
+                JOptionPane.showMessageDialog(null,"Carro Excluído com Sucesso!","ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
+               /*
+                txtCodigo.setText("");
+                txtTitulo.setText("");
+                txtAutor.setText("");
+                txtEditora.setText("");
+                txtQuantidade.setText("");
+                */
+            }else{
+                JOptionPane.showMessageDialog(null,"ERRO; Carro não foi excluído !","ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CarroAtualizar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
