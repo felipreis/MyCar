@@ -118,4 +118,29 @@ public class CarroDao {
         
     }
     
+    public ArrayList<Carro> consultarMarca (Carro carro) throws SQLException{
+         ArrayList<Carro> listCarro = new ArrayList<Carro>();
+        
+        Conexao conexao = new Conexao();
+        Connection connection = conexao.conectar();
+        String query = "SELECT * FROM carro where marca like '" + carro.getMarca() + "%'";
+        Statement statement =  connection.createStatement();
+        ResultSet retorno =  statement.executeQuery(query);
+        
+          
+        while (retorno.next()){
+                Carro carroRetorno = new Carro();     
+                carroRetorno.setCodigo(retorno.getInt("codigo"));
+                carroRetorno.setModelo(retorno.getString("modelo"));
+                carroRetorno.setPlaca(retorno.getString("placa"));
+                carroRetorno.setMarca(retorno.getString("marca"));
+                carroRetorno.setCor(retorno.getString("cor"));
+                carroRetorno.setAno(retorno.getInt("ano"));
+                carroRetorno.setStatus(retorno.getString("status"));
+                listCarro.add(carroRetorno);
+        }
+        
+        return listCarro;
+    }
+    
 }

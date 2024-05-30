@@ -35,4 +35,9 @@ public class CarroControle {
         return carroService.excluir(carro);
     }
     
+    public ArrayList<Carro> consultarMarca (Carro carro) throws SQLException{
+        CarroService carroService = new CarroService();
+        return carroService.consultarMarca(carro);
+    }
+    
 }
