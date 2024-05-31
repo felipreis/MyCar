@@ -104,5 +104,29 @@ public class ClienteDao {
         
     }
     
+    public ArrayList<Cliente> consultarNome(Cliente cliente) throws SQLException{
+        ArrayList<Cliente> listCliente = new ArrayList<Cliente>();
+        
+        Conexao conexao = new Conexao();
+        Connection connection = conexao.conectar();
+        String query = "SELECT * FROM cliente where nome like '" + cliente.getNome() + "%'";
+        Statement statement =  connection.createStatement();
+        ResultSet retorno =  statement.executeQuery(query);
+        
+          
+        while (retorno.next()){
+                Cliente clienteRetorno = new Cliente();     
+                clienteRetorno.setCodigo(retorno.getInt("codigo"));
+                clienteRetorno.setNome(retorno.getString("nome"));
+                clienteRetorno.setDataNascimento(retorno.getDate("dataNascimento"));
+                clienteRetorno.setCpf(retorno.getString("Cpf"));
+                clienteRetorno.setEmail(retorno.getString("Email"));
+                clienteRetorno.setTelefone(retorno.getInt("Telefone"));
+                listCliente.add(clienteRetorno);
+        }
+        
+        return listCliente;
+    }
+    
 }
 

@@ -37,4 +37,9 @@ public class ClienteService {
         return clienteDao.excluir(cliente);
     }
     
+    public ArrayList<Cliente> consultarNome (Cliente cliente) throws SQLException{
+        ClienteDao clienteDao = new ClienteDao();
+        return clienteDao.consultarNome(cliente);
+    }
+    
 }
