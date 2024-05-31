@@ -18,7 +18,7 @@ public class Aluguel {
     private Date dataSaida;
     private Date dataEntrega;
     private Double preco;
-    private int formaPagamento;
+    private String formaPagamento;
 
     public int getCodigo() {
         return codigo;
@@ -68,11 +68,11 @@ public class Aluguel {
         this.preco = preco;
     }
 
-    public int getFormaPagamento() {
+    public String getFormaPagamento() {
         return formaPagamento;
     }
 
-    public void setFormaPagamento(int formaPagamento) {
+    public void setFormaPagamento(String formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
     
