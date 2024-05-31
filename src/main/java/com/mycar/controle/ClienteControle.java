@@ -20,15 +20,17 @@ public class ClienteControle {
         return clienteService.cadastrar(cliente);
     }
     
-    public ArrayList<Cliente> consultar (Cliente cliente) throws SQLException{
+    public Cliente consultar (Cliente cliente) throws SQLException{
         ClienteService clienteService = new ClienteService();
         return clienteService.consultar(cliente);
     }
     
+    /*
     public boolean atualizar (Cliente cliente) throws SQLException{
         ClienteService clienteService = new ClienteService();
         return clienteService.atualizar(cliente);
     }
+    */
     
     public boolean excluir (Cliente cliente) throws SQLException{
         ClienteService clienteService = new ClienteService();

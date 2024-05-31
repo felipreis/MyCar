@@ -4,10 +4,12 @@
  */
 package com.mycar.view;
 
+import com.google.protobuf.TextFormat;
 import com.mycar.controle.ClienteControle;
 import com.mycar.modelo.Cliente;
 import com.mycar.service.Util;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,12 +18,12 @@ import javax.swing.JOptionPane;
  *
  * @author henri
  */
-public class ClienteAtualizar extends javax.swing.JFrame {
+public class ClienteCadastrar extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClienteAcessar
+     * Creates new form ClienteCadastrado
      */
-    public ClienteAtualizar() {
+    public ClienteCadastrar() {
         initComponents();
     }
 
@@ -34,6 +36,9 @@ public class ClienteAtualizar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtNascimento = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -42,15 +47,13 @@ public class ClienteAtualizar extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtNascimento = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel4.setText("E-mail");
+
+        jLabel5.setText("Data Nascimento");
 
         txtTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +61,7 @@ public class ClienteAtualizar extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Consultar");
+        jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -85,70 +88,43 @@ public class ClienteAtualizar extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("E-mail");
-
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Data Nascimento");
-
-        jButton3.setText("Excluir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Codigo do Cliente");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel6)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(59, 59, 59))
             .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEmail)
-                            .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome)
-                            .addComponent(txtTelefone)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                    .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                    .addComponent(txtTelefone)
+                    .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,10 +144,10 @@ public class ClienteAtualizar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(28, 28, 28))
         );
 
@@ -196,51 +172,45 @@ public class ClienteAtualizar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         Cliente cliente = new Cliente();
         ClienteControle clienteControle = new ClienteControle();
         Util util = new Util();
         
-        cliente.setCodigo(Integer.parseInt(txtCodigo.getText()));
+        String nome = txtNome.getText();
+        String email = txtEmail.getText();
+        int telefone = Integer.parseInt(txtTelefone.getText());
+        String cpf =txtCpf.getText();        
         
+        cliente.setNome(nome);
+        cliente.setCpf(cpf);
+        cliente.setTelefone(telefone);
+        cliente.setEmail(email);
         try {
-            cliente = clienteControle.consultar(cliente);
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteAtualizar.class.getName()).log(Level.SEVERE, null, ex);
+            cliente.setDataNascimento(util.stringToDate(txtNascimento.getText()));
+        } catch (TextFormat.ParseException ex) {
+            Logger.getLogger(ClienteCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ClienteCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        txtNome.setText(cliente.getNome());
-        txtCpf.setText(cliente.getCpf());
-        txtTelefone.setText(String.valueOf(cliente.getTelefone()));
-        txtEmail.setText(cliente.getEmail());
-        txtNascimento.setText(util.dateToString(cliente.getDataNascimento()));
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        
-            ClienteControle clienteControle = new ClienteControle();
-            Cliente cliente = new Cliente();
-            
-            cliente.setCodigo(Integer.parseInt(txtCodigo.getText()));
-            
-            try {
-            if(clienteControle.excluir(cliente) == false){
-                JOptionPane.showMessageDialog(null,"Cliente Excluído com Sucesso!","ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
-                txtCodigo.setText("");
+        try {
+            if(clienteControle.cadastrar(cliente) == true){
+                JOptionPane.showMessageDialog(null,"Cliente Cadastrado com Sucesso!","ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
                 txtNome.setText("");
-                txtCpf.setText("");
                 txtTelefone.setText("");
+                txtCpf.setText("");
                 txtEmail.setText("");
                 txtNascimento.setText("");
             }else{
-                JOptionPane.showMessageDialog(null,"ERRO; Cliente não foi excluído !","ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"ERRO; Cliente não foi cadastrado !","ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteAtualizar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,13 +229,13 @@ public class ClienteAtualizar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -275,7 +245,7 @@ public class ClienteAtualizar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteAtualizar().setVisible(true);
+                new ClienteCadastrar().setVisible(true);
             }
         });
     }
@@ -283,14 +253,11 @@ public class ClienteAtualizar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNascimento;
