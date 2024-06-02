@@ -57,7 +57,7 @@ public class Util {
         calSaida.set(Calendar.MILLISECOND,0);
         
         Calendar calDevolucao = Calendar.getInstance();
-        calDevolucao.setTime(dataSaida);
+        calDevolucao.setTime(dataDevolucao);
         calDevolucao.set(Calendar.HOUR_OF_DAY,0);
         calDevolucao.set(Calendar.MINUTE,0);
         calDevolucao.set(Calendar.SECOND,0);
