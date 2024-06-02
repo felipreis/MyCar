@@ -339,6 +339,8 @@ public class AlugarVeiculoCliente extends javax.swing.JFrame {
         Aluguel aluguel = new Aluguel();
         AluguelControle aluguelControle = new AluguelControle();
         Util util = new Util();
+        Carro carro = new Carro();
+        CarroControle carroControle = new CarroControle();
         
         
         int codCarro = Integer.parseInt(txtCodigoVeiculo.getText());
@@ -384,6 +386,22 @@ public class AlugarVeiculoCliente extends javax.swing.JFrame {
             Logger.getLogger(ClienteCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        carro.setCodigo(Integer.parseInt(txtCodigoVeiculo.getText()));
+        
+        try {
+            carro = carroControle.consultar(carro);
+        } catch (SQLException ex) {
+            Logger.getLogger(AlugarVeiculoCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        carro.setStatus("Indisponivel");
+        
+        try {
+            carroControle.atualizar(carro);
+        } catch (SQLException ex) {
+            Logger.getLogger(AlugarVeiculoCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnAlugarActionPerformed
 
     private void txtMarcaVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaVeiculoActionPerformed
@@ -406,7 +424,15 @@ public class AlugarVeiculoCliente extends javax.swing.JFrame {
             
             try {
                 dataSaida = util.stringToDate(dataSaidaTxt);
-                dataDevolucao = util.stringToDate(dataDevolucaoTxt); 
+                
+            } catch (TextFormat.ParseException ex) {
+                Logger.getLogger(AlugarVeiculoCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(AlugarVeiculoCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            try { 
+                dataDevolucao = util.stringToDate(dataDevolucaoTxt);
             } catch (TextFormat.ParseException ex) {
                 Logger.getLogger(AlugarVeiculoCliente.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
