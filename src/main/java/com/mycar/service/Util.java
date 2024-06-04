@@ -75,11 +75,11 @@ public class Util {
         double preco;
         
         if(ano >= 2023){
-            preco = 100.00*numeroDias;
+            preco = 100.75*numeroDias;
         }else if( ano < 2023 && ano >= 2018){
-            preco = 75.00*numeroDias;
+            preco = 75.25*numeroDias;
         }else{
-            preco = 50.00*numeroDias;
+            preco = 50.15*numeroDias;
         }
         return preco;
     }
